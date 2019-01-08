@@ -24,7 +24,9 @@
     "collectCoverage": true,
 	"notify": true,
     "collectCoverageFrom": [
-      "../src/**/*.{js,jsx}"
+       "../src/**/*.{js,jsx}",
+	   "!**/node_modules/**",
+	   "!**/vendor/**"
     ],
 	"coverageThreshold" : {
 	"global" : {
