@@ -8,34 +8,55 @@
     "jest-cli": "^23.6.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
+    "react-bootstrap-sidebar": "0.0.1",
     "react-dom": "^16.7.0",
+    "react-icons": "^3.3.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest --colors --coverage",
+    "start": "set PORT=8000 && react-scripts start",
+    "build": "react-scripts build --out dir lib --ignore '**/__tests__/'",
+    "test": "jest",
     "eject": "react-scripts eject",
-	"lint": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint -f html -o report/eslintReport.html --fix --ext .jsx --ignore-path .gitignore",
+    "coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html"
   },
   "jest": {
-	"modulePathIgnorePatterns" : ["/node_modules/"],
-	"verbose" : true,
+    "automock": true,
+    "clearMocks": true,
+    "cacheDirectory": "./cache",
     "collectCoverage": true,
-	"notify": true,
-    "collectCoverageFrom": [
-       "../src/**/*.{js,jsx}",
-	   "!**/node_modules/**",
-	   "!**/vendor/**"
+    "testMatch": [
+      "**/*test.js"
     ],
-	"coverageThreshold" : {
-	"global" : {
-	"branches" : 80,
-	"functions" : 80,
-	"lines" : 80,
-	"statements" : 80
-	}
-	}
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "modulePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "verbose": true,
+    "notify": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "\\.(scss)$": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "collectCoverageFrom": [
+      "<rootDir>/src/__tests__"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
