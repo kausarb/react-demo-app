@@ -4,18 +4,6 @@ import { Form, Button, FormControl, Nav, NavItem, Navbar } from "react-bootstrap
 import Home from "../Home";
 
 export default class NavigationBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleShow=this.handleShow.bind(this);
-        this.state = {
-            show : false
-        };
-    }
-
-    handleShow() {
-        this.setState({ show : true});
-    }
-
     render() {
         return (
             <Navbar bg="dark" variant="dark">
@@ -33,8 +21,8 @@ export default class NavigationBar extends React.Component {
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     <Button type="success" variant="outline-light">Search</Button>
                     <Nav inline>
-                        <NavItem eventKey={3} href="#Register" onClick={this.handleShow}>Register</NavItem>
-                        <NavItem eventKey={4} href="#LogIn" onClick={this.handleShow}>Login</NavItem>
+                        <NavItem eventKey={3} href="#register">Register</NavItem>
+                        <NavItem eventKey={4} href="#login">Login</NavItem>
                     </Nav>
                 </Form>
             </Navbar>

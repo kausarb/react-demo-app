@@ -5,35 +5,41 @@ import { Modal, Form, FormGroup, FormControl, Button, Col } from "react-bootstra
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
+        this.toggle = this.toggle.bind(this);
         this.state = {
-            username: "Phone number,username or email",
-            password: "Password"
+            showModal: true,
         };
+    }
+    toggle() {
+        this.setState({ showModal: !this.state.showModal });
     }
     render() {
         return (
-            <section className="login">
+            <div>
                 <NavLink to="/login">
-                    <Modal.Dialog>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Login</Modal.Title>
+                    <Modal show={this.state.showModal}>
+                        <Modal.Header>
+                            <Modal.Title center>Login</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form>
                                 <Col xs={6} md={4} />
                                 <FormGroup bsSize="sm" validationState="success">
-                                    <FormControl type="text" placeholder={this.state.username}></FormControl>
+                                    <FormControl type="text" placeholder="Phone number,username or email"></FormControl>
                                 </FormGroup>
                                 <FormGroup bsSize="sm" validationState="success">
-                                    <FormControl type="password" placeholder={this.state.password}></FormControl>
+                                    <FormControl type="password" placeholder="Password"></FormControl>
                                 </FormGroup>
-                                <Button bsStyle="primary" center>Log In</Button>
-                                Don't have an account? <a href="/Register">Sign up</a>
                             </Form>
                         </Modal.Body>
-                    </Modal.Dialog>
+                        <Modal.Footer>
+                            <Button bsStyle="success" type="submit">Log In</Button>
+                            <Button bsStyle="primary" onClick={this.toggle}>Close</Button>
+                            Don't have an account? <a href="/Register">Sign up</a>
+                        </Modal.Footer>
+                    </Modal>
                 </NavLink>
-            </section>
+            </div>
         );
     }
 }
