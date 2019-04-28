@@ -1,25 +1,23 @@
 import React from "react";
-import { MdHome } from "react-icons/md";
-import { Form, Button, FormControl, Nav, NavItem, Navbar } from "react-bootstrap";
-import Home from "../Home";
+import { Form, Button, FormControl, Nav, NavItem, Navbar, Glyphicon } from "react-bootstrap";
+import { NavBarColor } from "../constants/AppConstants";
+import { MdHome } from "react-icons/md"; 
 
 export default class NavigationBar extends React.Component {
     render() {
         return (
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <MdHome />
-                        <a href="#Home">{Home}</a>
-                    </Navbar.Brand>
-                </Navbar.Header>
-                <Nav>
-                    <NavItem eventKey={1} href="#About">About</NavItem>
+            <Navbar style={NavBarColor}>
+                <Navbar.Brand className="mr-md-2">
+                    <a href="/"><MdHome /></a>
+                    <Glyphicon glyph="menu-hamburger" />
+                </Navbar.Brand>
+                <Nav className="mr-0 mr-md-2">
+                    <NavItem eventKey={1} href="#About" >About</NavItem>
                     <NavItem eventKey={2} href="#Contact">Contact Us</NavItem>
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button type="success" variant="outline-light">Search</Button>
+                <Form className="ml-md-auto" inline>
+                    <FormControl type="text" placeholder="Search" />
+                    <Button type="success" variant="secondary">Search</Button>
                     <Nav inline>
                         <NavItem eventKey={3} href="#register">Register</NavItem>
                         <NavItem eventKey={4} href="#login">Login</NavItem>
